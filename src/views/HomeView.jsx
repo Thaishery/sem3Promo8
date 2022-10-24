@@ -28,7 +28,7 @@ const HomeView = () => {
     {task.map((tache, key)=>(
         <div key={key}>
           {tache}
-          <button onClick={(e)=>{handleDelete(key)}}>supprimer</button>
+          <button onClick={e=>{handleDelete(key)}}>supprimer</button>
         </div>
       ))
     }

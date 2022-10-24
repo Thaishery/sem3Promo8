@@ -21,6 +21,15 @@ const Navbar = ({ lang, parentCallback, handleCloseNavbar, isNavbarOpen }) => {
       class: "",
       internItems: false, 
       child: false, 
+    },
+    {
+      id: 2, 
+      itemLink : "/rectangles",
+      itemTitle: "rectangles",
+      isActive: false,
+      class: "",
+      internItems: false, 
+      child: false, 
     }
   ])
   useEffect(() => {
