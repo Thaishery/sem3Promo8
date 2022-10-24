@@ -1,57 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const HomeView = () => {
-  const [taches, setTaches] = useState([{
-    id:0,
-    nomTache: "",
-    tache: "",
-  }])
-  const [curTacheNom,setCurTacheNom] = useState("")
-  const [curTache, setCurTache] = useState("")
-  const handleNomChange = (val)=>{setCurTacheNom(val.target.value)}
-  const handleTacheChange=(val)=>{setCurTache(val.target.value)}
-  const addTaches = (tache)=>{
-    console.log(tache)
-    tache.preventDefault()
-    let temp = taches
-    let newTache = {
-      id: temp.length,
-      nomTache: curTacheNom,
-      tache: curTache
-    }
-    temp.push(newTache)
-    setTaches(temp)
+
+  const [task, setTask] = useState([])
+  const [inputTask, setInputTask]= useState("")
+  const handleSubmit = e =>{
+    e.preventDefault()
+    setTask([...task,inputTask])
+    setInputTask("")
   }
-  const deleteTaches = (tache)=>{
-    let temp = taches.splice(tache.id, 1)
-    setTaches(temp)
+  const handleDelete = (e,key) =>{
+    let temp = task
+    temp.splice(key,1)
+    setTask([...temp])
   }
   return (
     <>
-    <div>hello world</div>
-    <form action="addTache" onSubmit={addTaches}>
+    <form onSubmit={handleSubmit}>
       <label>nom : </label>
       <input
         type="text"
-        value={curTacheNom}
-        onChange={(val)=>handleNomChange(val)}
+        value={inputTask}
+        onChange={e=>setInputTask(e.target.value)}
       />
-      <label>tache : </label>
-      <input 
-        type="text"
-        value={curTache}
-        onChange={(val)=>handleTacheChange(val)} 
-      />
-      <button>Ajouter tache</button>
+      <button type="submit">Ajouter tache</button>
     </form>
-    {taches && taches.map((tache, key)=>{
-      if(tache.nomTache !== "" && tache.tache !== "")
-      return (
+    {task.map((tache, key)=>(
         <div key={key}>
-          {tache.nomTache} : {tache.tache}
+          {tache}
+          <button onClick={(e)=>{handleDelete(e,key)}}>supprimer</button>
         </div>
-      )
-    })}
+      ))
+    }
     </>
   )
 }
