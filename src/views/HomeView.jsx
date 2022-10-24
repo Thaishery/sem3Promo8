@@ -9,10 +9,10 @@ const HomeView = () => {
     setTask([...task,inputTask])
     setInputTask("")
   }
-  const handleDelete = (e,key) =>{
-    let temp = task
+  const handleDelete = (key) =>{
+    let temp = [...task]
     temp.splice(key,1)
-    setTask([...temp])
+    setTask(temp)
   }
   return (
     <>
@@ -28,7 +28,7 @@ const HomeView = () => {
     {task.map((tache, key)=>(
         <div key={key}>
           {tache}
-          <button onClick={(e)=>{handleDelete(e,key)}}>supprimer</button>
+          <button onClick={(e)=>{handleDelete(key)}}>supprimer</button>
         </div>
       ))
     }
