@@ -15,8 +15,7 @@ const RectanglesView = () => {
  }
   const handleSubmit = e =>{
     e.preventDefault()
-    let tempArray = [...retangles]
-    tempArray = []
+    let tempArray = []
     for(let i = 0 ; i < inputNumber; i ++){
       let rectangle = {
         height: Math.floor(getRandomArbitrary(100,200)),
