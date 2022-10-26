@@ -8,6 +8,7 @@ import LifeCyclesView from "./views/LifeCycles";
 import FilmsView from "./views/Films";
 import LiftingStateUpView from "./views/LifingStateUp";
 import ConverterView from "./views/Converter";
+import SliderView from "./views/Slider";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="films" element={<FilmsView/>}/>
           <Route path="liftingstateup" element={<LiftingStateUpView/>} />
           <Route path="btctoeur" element={<ConverterView/>} />
+          <Route path="slider" element={<SliderView/>}/>
         </Route>
       </Routes>
     </Router>
