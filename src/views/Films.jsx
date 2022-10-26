@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Movie from"../components/Film/Movie";
 
 const Films = () =>{
@@ -18,7 +18,6 @@ const Films = () =>{
     setFilms([...films,film])
   }
   const deleteFilm = id =>{
-    console.log(id)
     let curFilms = [...films]
     curFilms.splice(id,1)
     curFilms.map((film,index)=>
@@ -26,12 +25,8 @@ const Films = () =>{
     )
     setFilms(curFilms)
   }
-  const updateDeletedCount = (isDelete)=>{
-    if(isDelete === true){
-      let deleted = deletedFilms
-      deleted ++
-      setDeletedFilms(deleted);
-    }
+  const updateDeletedCount = ()=>{
+      setDeletedFilms(oldState => (oldState +1));
   }
 
   return(
@@ -57,7 +52,6 @@ const Films = () =>{
           <div key={index}>
             <Movie
               key={index}
-              deleted={deletedFilms}
               id={film.id}
               name={film.name}
               year={film.year}

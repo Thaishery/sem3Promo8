@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Movie = (film) =>{
+const Movie = ({id,name,year,deleteFilm,updateDeletedCount}) =>{
   const [movieStyle, setMovieStyle]= useState({})
   const handleColorChange = ()=>{
     let style = {
@@ -15,20 +15,21 @@ const Movie = (film) =>{
        code =code+ makeColorCode[Math.floor(Math.random() * 16)];
     }
     return code;
- }
-// useEffect(() => {
-//   film.updateDeletedCount(false)
-//   return () => {
-//     film.updateDeletedCount(true)
-//   }
-// }, [film.deleted]);
+  }
+useEffect(() => {
+  console.log("mount")
+  return () => {
+    console.log("unmount")
+    updateDeletedCount()
+  }
+}, []);
 
   return(
     <>
     <div style={movieStyle}>
-      {film.name} {film.year}
+      {name} {year}
       <button onClick={handleColorChange}>Changer la couleur de fond</button>
-      <button onClick={()=>{film.deleteFilm(film.id)}}>Supprimer le film</button>
+      <button onClick={()=>{deleteFilm(id)}}>Supprimer le film</button>
       </div>
     </>
   )
