@@ -5,7 +5,7 @@ const Meals = ({meals,addToCart}) => {
     <>
     <div style={{display:"flex",flexWrap:"wrap"}}>
       {meals.map((meal,i)=>(
-        <div key={i} style={{width:"33%"}}>
+        <div key={i} style={{width:"26%", border:"1px solid black",margin:"auto", marginBottom:"40px"}}>
           <Meal meal={meal} addToCart={addToCart}/>
         </div>
       ))}

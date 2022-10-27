@@ -5,7 +5,7 @@ const Cart = ({closeCart,totalCart, cart}) => {
       <button onClick={()=>{closeCart()}}>fermer</button>
       <div style={{display:"flex",flexWrap:"wrap" }}>
         {cart.map((meal,i)=>(
-            <div key={i} style={{width:"33%"}}>
+            <div key={i} style={{width:"26%"}}>
               <Meal meal={meal} addToCart={false}/>
             </div>
         ))}

@@ -61,7 +61,7 @@ const BorneView = () => {
       {!displayCart &&
       <>
         <Meals meals={meals} addToCart={addToCart}/>
-        <button onClick={()=>{setDisplayCart(!displayCart)}}>Pannier</button>
+        <button onClick={()=>{if(cart.length > 0)setDisplayCart(!displayCart);else alert("Pas d'articles dans le pannier")}}>Pannier</button>
       </>
       }
     </>
