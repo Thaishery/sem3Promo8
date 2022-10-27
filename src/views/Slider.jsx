@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Thumbnails from "../components/Slider/Thumbnails";
 import View from "../components/Slider/View";
 const SliderView = () => {
@@ -21,7 +21,6 @@ const SliderView = () => {
       <View 
         curImage={curImage}
         sliderPosition={sliderPosition}
-        setSliderPosition={setSliderPosition}
         changeImage={changeImage}
         imagesLength={images.length}
       />

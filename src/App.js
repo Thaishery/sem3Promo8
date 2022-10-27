@@ -9,6 +9,7 @@ import FilmsView from "./views/Films";
 import LiftingStateUpView from "./views/LifingStateUp";
 import ConverterView from "./views/Converter";
 import SliderView from "./views/Slider";
+import BorneView from "./views/Borne";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="liftingstateup" element={<LiftingStateUpView/>} />
           <Route path="btctoeur" element={<ConverterView/>} />
           <Route path="slider" element={<SliderView/>}/>
+          <Route path="borne" element={<BorneView/>}/>
         </Route>
       </Routes>
     </Router>

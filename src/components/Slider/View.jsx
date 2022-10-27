@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const View = ({curImage, sliderPosition, setSliderPosition,changeImage, imagesLength}) => {
+const View = ({curImage, sliderPosition, changeImage, imagesLength}) => {
 
   const decreasseSliderPosition = () =>{
     if(sliderPosition > 0){
@@ -21,7 +19,7 @@ const View = ({curImage, sliderPosition, setSliderPosition,changeImage, imagesLe
   return(
     <>
       <button onClick={()=>{decreasseSliderPosition()}} > {"<"} </button>
-        <img src={curImage} style={{maxHeight: "400px", maxWidth: "500px",minHeight:"400px",minWidth:"500px"}}></img>
+        <img alt=" " src={curImage} style={{maxHeight: "400px", maxWidth: "500px",minHeight:"400px",minWidth:"500px"}}></img>
       <button onClick={()=>{increaseSliderPosition()}}> {">"}</button>
     </>
   )

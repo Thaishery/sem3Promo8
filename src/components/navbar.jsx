@@ -84,6 +84,15 @@ const Navbar = ({ lang, parentCallback, handleCloseNavbar, isNavbarOpen }) => {
       class: "",
       internItems: false,
       child: false,
+    },
+    {
+      id:9,
+      itemLink: "/borne",
+      itemTitle: "borne",
+      isActive: false,
+      class: "",
+      internItems: false,
+      child: false,
     }
   ])
   useEffect(() => {
