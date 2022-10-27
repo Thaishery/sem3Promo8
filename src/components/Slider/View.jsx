@@ -1,24 +1,19 @@
 import { useState } from "react";
-import Thumbnails from "../Slider/Thumbnails";
 
 const View = ({curImage, sliderPosition, setSliderPosition,changeImage, imagesLength}) => {
 
   const decreasseSliderPosition = () =>{
     if(sliderPosition > 0){
-      setSliderPosition(sliderPosition --)
-      changeImage(sliderPosition--)
+      changeImage(sliderPosition-1)
     }
     else{
-      setSliderPosition(imagesLength)
-      changeImage(imagesLength)
+      changeImage(imagesLength-1)
     }
   }
   const increaseSliderPosition = () =>{
-    if(sliderPosition < imagesLength){
-      setSliderPosition(sliderPosition++)
-      changeImage(sliderPosition++)
+    if(sliderPosition < imagesLength-1){
+      changeImage(sliderPosition+1)
     }else{
-      setSliderPosition(0)
       changeImage(0)
     }
   }
@@ -26,7 +21,7 @@ const View = ({curImage, sliderPosition, setSliderPosition,changeImage, imagesLe
   return(
     <>
       <button onClick={()=>{decreasseSliderPosition()}} > {"<"} </button>
-        <img src={curImage}></img>
+        <img src={curImage} style={{maxHeight: "400px", maxWidth: "500px",minHeight:"400px",minWidth:"500px"}}></img>
       <button onClick={()=>{increaseSliderPosition()}}> {">"}</button>
     </>
   )
