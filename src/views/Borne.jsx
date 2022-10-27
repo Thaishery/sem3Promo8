@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Cart from "../components/Borne/Cart";
 import Meals from "../components/Borne/Meals";
+import { BorneContext } from "../context/BorneContext";
 
 const BorneView = () => {
   const [cart, setCart] = useState([])
+  // const {cart,setCart} = useContext(BorneContext)
   const [totalCart, setTotalCart] = useState(0)
   const [displayCart, setDisplayCart] = useState(false)
   const meals = [
@@ -44,26 +46,30 @@ const BorneView = () => {
         price: 20,
       }
   ]
-  const addToCart = (id) =>{
-    let curCart = [...cart]
-    curCart.push(meals[id])
-    setCart(curCart);
-    setTotalCart(totalCart+meals[id].price)
-  }
+  // const addToCart = (id) =>{
+  //   let curCart = [...cart]
+  //   curCart.push(meals[id])
+  //   setCart(curCart);
+  //   setTotalCart(totalCart+meals[id].price)
+  // }
   const closeCart = () =>{
     setDisplayCart(false)
   }
   return(
     <>
-      {displayCart && 
-        <Cart closeCart={closeCart} cart={cart} totalCart={totalCart}/>
-      }
-      {!displayCart &&
-      <>
-        <Meals meals={meals} addToCart={addToCart}/>
-        <button onClick={()=>{if(cart.length > 0)setDisplayCart(!displayCart);else alert("Pas d'articles dans le pannier")}}>Pannier</button>
-      </>
-      }
+      <BorneContext.Provider
+        value={{setCart,cart,setTotalCart,totalCart}}
+      >
+        {displayCart && 
+          <Cart closeCart={closeCart} cart={cart} totalCart={totalCart}/>
+        }
+        {!displayCart &&
+        <>
+          <Meals meals={meals}/>
+          <button onClick={()=>{if(cart.length > 0)setDisplayCart(!displayCart);else alert("Pas d'articles dans le pannier")}}>Pannier</button>
+        </>
+        }
+      </BorneContext.Provider>
     </>
   )
 }
